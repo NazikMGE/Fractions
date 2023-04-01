@@ -1,3 +1,3 @@
 # Fractions
-class fractions with simple menu
+class fractions with operator overloading
 @sea_player

@@ -5,14 +5,14 @@ class Fractions {
 public:
 	Fractions(int x1, int a1, int b1);
 	Fractions(int a1, int b1);
-	Fractions(const char* text) { std::cout << text << std::endl; x = 0; a = 0; b = 0;};
+	Fractions(const char* text) { std::cout << text << std::endl; x = 0; a = 0; b = 0; };
 	Fractions() { x = 0; a = 0; b = 0; }
 
 	Fractions operator-(Fractions& other);
 
 	Fractions operator=(Fractions& other);
 
-	Fractions operator*(Fractions& other); 
+	Fractions operator*(Fractions& other);
 
 	Fractions operator==(Fractions& other);
 
@@ -40,13 +40,13 @@ Fractions::Fractions(int a1, int b1) {
 }
 
 int Fractions::gcd(int a, int b) {
-		int R;
-		while ((a % b) > 0) {
-			R = a % b;
-			a = b;
-			b = R;
-		}
-		return b;
+	int R;
+	while ((a % b) > 0) {
+		R = a % b;
+		a = b;
+		b = R;
+	}
+	return b;
 }
 
 int Fractions::getX() {
@@ -77,7 +77,7 @@ Fractions Fractions::operator-(Fractions& other) {
 		}
 	}
 
-	 if (isXentered == true && other.isXentered == true) {
+	if (isXentered == true && other.isXentered == true) {
 
 		int wholePart = (getX() - other.x);
 		int denominator = getB() * other.b;
@@ -131,7 +131,7 @@ Fractions Fractions::operator-(Fractions& other) {
 	return Fractions();
 }
 
- Fractions Fractions::operator=(Fractions& other) {
+Fractions Fractions::operator=(Fractions& other) {
 	if (this == &other) {
 		return *this;
 	}
@@ -144,111 +144,111 @@ Fractions Fractions::operator-(Fractions& other) {
 	}
 }
 
- Fractions Fractions::operator*(Fractions& other) {
-	 if (isXentered == false && other.isXentered == false) {
-		 int numerator = getA() * other.a;
-		 int denominator = getB() * other.b;
+Fractions Fractions::operator*(Fractions& other) {
+	if (isXentered == false && other.isXentered == false) {
+		int numerator = getA() * other.a;
+		int denominator = getB() * other.b;
 
-		 if (numerator == 0) {
-			 return Fractions();
-		 }
-		 else {
-			 int gcd_real = gcd(abs(numerator), abs(denominator));
-			 if (numerator / gcd_real < 0 && denominator / gcd_real < 0) {
-				 return Fractions((numerator / gcd_real) * -1, (denominator / gcd_real) * -1);
-			 }
-			 return Fractions(numerator / gcd_real, denominator / gcd_real);
-		 }
-	 }
-	 if (isXentered == true && other.isXentered == true) {
-		 int denominator = other.b * getB();
-		 int numerator = (getX() * getB() + getA()) * (other.x * other.b + other.a);
-		 if (numerator == 0) {
-			 return Fractions();
-		 }
-		 else {
-			 int gcd_real = gcd(abs(numerator), abs(denominator));
-			 if (numerator / gcd_real < 0 && denominator / gcd_real < 0) {
-				 return Fractions((numerator / gcd_real) * -1, (denominator / gcd_real) * -1);
-			 }
-			 return Fractions(numerator / gcd_real, denominator / gcd_real);
-		 }
-	 }
-	 if (isXentered == true && other.isXentered == false) {
-		 int numerator = (getX() * getB() + getA()) * other.a;
-		 int denominator = getB() * other.b;
-		 if (numerator == 0) {
-			 return Fractions();
-		 }
-		 else {
-			 int gcd_real = gcd(abs(numerator), abs(denominator));
-			 if (numerator / gcd_real < 0 && denominator / gcd_real < 0) {
-				 return Fractions((numerator / gcd_real) * -1, (denominator / gcd_real) * -1);
-			 }
-			 return Fractions(numerator / gcd_real, denominator / gcd_real);
-		 }
-	 }
-	 if (isXentered = false && isXentered == true) {
-		 int numerator = getA() * (other.x * other.b + other.a);
-		 int denominator = getB() * other.b;
-		 if (numerator == 0) {
-			 return Fractions();
-		 }
-		 else {
-			 int gcd_real = gcd(abs(numerator), abs(denominator));
-			 if (numerator / gcd_real < 0 && denominator / gcd_real < 0) {
-				 return Fractions((numerator / gcd_real) * -1, (denominator / gcd_real) * -1);
-			 }
-			 return Fractions(numerator / gcd_real, denominator / gcd_real);
-		 }
-	 }
-	 return Fractions();
- }
+		if (numerator == 0) {
+			return Fractions();
+		}
+		else {
+			int gcd_real = gcd(abs(numerator), abs(denominator));
+			if (numerator / gcd_real < 0 && denominator / gcd_real < 0) {
+				return Fractions((numerator / gcd_real) * -1, (denominator / gcd_real) * -1);
+			}
+			return Fractions(numerator / gcd_real, denominator / gcd_real);
+		}
+	}
+	if (isXentered == true && other.isXentered == true) {
+		int denominator = other.b * getB();
+		int numerator = (getX() * getB() + getA()) * (other.x * other.b + other.a);
+		if (numerator == 0) {
+			return Fractions();
+		}
+		else {
+			int gcd_real = gcd(abs(numerator), abs(denominator));
+			if (numerator / gcd_real < 0 && denominator / gcd_real < 0) {
+				return Fractions((numerator / gcd_real) * -1, (denominator / gcd_real) * -1);
+			}
+			return Fractions(numerator / gcd_real, denominator / gcd_real);
+		}
+	}
+	if (isXentered == true && other.isXentered == false) {
+		int numerator = (getX() * getB() + getA()) * other.a;
+		int denominator = getB() * other.b;
+		if (numerator == 0) {
+			return Fractions();
+		}
+		else {
+			int gcd_real = gcd(abs(numerator), abs(denominator));
+			if (numerator / gcd_real < 0 && denominator / gcd_real < 0) {
+				return Fractions((numerator / gcd_real) * -1, (denominator / gcd_real) * -1);
+			}
+			return Fractions(numerator / gcd_real, denominator / gcd_real);
+		}
+	}
+	if (isXentered = false && isXentered == true) {
+		int numerator = getA() * (other.x * other.b + other.a);
+		int denominator = getB() * other.b;
+		if (numerator == 0) {
+			return Fractions();
+		}
+		else {
+			int gcd_real = gcd(abs(numerator), abs(denominator));
+			if (numerator / gcd_real < 0 && denominator / gcd_real < 0) {
+				return Fractions((numerator / gcd_real) * -1, (denominator / gcd_real) * -1);
+			}
+			return Fractions(numerator / gcd_real, denominator / gcd_real);
+		}
+	}
+	return Fractions();
+}
 
- Fractions Fractions::operator==(Fractions& other) {
-	 if (isXentered == true && other.isXentered == true) {
-		 int numerator1 = (getX() * getB() + getA()) / getB();
-		 int numerator2 = (other.x * other.b + other.a) / other.b;
+Fractions Fractions::operator==(Fractions& other) {
+	if (isXentered == true && other.isXentered == true) {
+		int numerator1 = (getX() * getB() + getA()) / getB();
+		int numerator2 = (other.x * other.b + other.a) / other.b;
 
-		 if (numerator1 == numerator2) {
-			 return Fractions("îäíàêîâ³");
-		 }
-		 else {
-			 return Fractions("ð³çí³");
-		 }
-	 }
-	 if (isXentered == false && other.isXentered == false) {
-		 double numerator1 = getA() / getB();
-		 double numerator2 = other.a / other.b;
+		if (numerator1 == numerator2) {
+			return Fractions("Ð¾Ð´Ð½Ð°ÐºÐ¾Ð²Ñ–");
+		}
+		else {
+			return Fractions("Ñ€Ñ–Ð·Ð½Ñ–");
+		}
+	}
+	if (isXentered == false && other.isXentered == false) {
+		double numerator1 = getA() / getB();
+		double numerator2 = other.a / other.b;
 
-		 if (numerator1 == numerator2) {
-			 return Fractions("îäíàêîâ³");
-		 }
-		 else {
-			 return Fractions("ð³çí³");
-		 }
-	 }
-	 if (isXentered == true && other.isXentered == false) {
-		 int numerator1 = (getX() * getB() + getA()) / getB();
-		 int numerator2 = other.a / other.b;
+		if (numerator1 == numerator2) {
+			return Fractions("Ð¾Ð´Ð½Ð°ÐºÐ¾Ð²Ñ–");
+		}
+		else {
+			return Fractions("Ñ€Ñ–Ð·Ð½Ñ–");
+		}
+	}
+	if (isXentered == true && other.isXentered == false) {
+		int numerator1 = (getX() * getB() + getA()) / getB();
+		int numerator2 = other.a / other.b;
 
-		 if (numerator1 == numerator2) {
-			 return Fractions("îäíàêîâ³");
-		 }
-		 else {
-			 return Fractions("ð³çí³");
-		 }
-	 }
-	 if (isXentered == false && other.isXentered == true) {
-		 int numerator1 = getA() / getB();
-		 int numerator2 = (other.x * other.b + other.a) / other.b;
-		 if (numerator1 == numerator2) {
-			 return Fractions("îäíàêîâ³");
-		 }
-		 else {
-			 return Fractions("ð³çí³");
-		 }
+		if (numerator1 == numerator2) {
+			return Fractions("Ð¾Ð´Ð½Ð°ÐºÐ¾Ð²Ñ–");
+		}
+		else {
+			return Fractions("Ñ€Ñ–Ð·Ð½Ñ–");
+		}
+	}
+	if (isXentered == false && other.isXentered == true) {
+		int numerator1 = getA() / getB();
+		int numerator2 = (other.x * other.b + other.a) / other.b;
+		if (numerator1 == numerator2) {
+			return Fractions("Ð¾Ð´Ð½Ð°ÐºÐ¾Ð²Ñ–");
+		}
+		else {
+			return Fractions("Ñ€Ñ–Ð·Ð½Ñ–");
+		}
 
-	 }
-	 return Fractions(" ");
- }
+	}
+	return Fractions(" ");
+}

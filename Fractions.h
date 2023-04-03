@@ -39,6 +39,9 @@ public:
 	// Метод, що повертає значення поля b
 	int getB();
 
+	// Метод для конвертації int в double
+	double intToDouble(int x);
+
 private:
 	int x, a, b;
 	bool isXentered = false;
@@ -83,6 +86,11 @@ int Fractions::getA() {
 // Метод, що повертає значення поля b
 int Fractions::getB() {
 	return b;
+}
+// Метод, що конвертує int в double тип даних
+double Fractions::intToDouble(int item) {
+	double opVal = (double)item;
+	return opVal;
 }
 
 // Перевантаження оператора віднімання (-)
@@ -245,10 +253,12 @@ Fractions Fractions::operator*(Fractions& other) {
 
 Fractions Fractions::operator==(Fractions& other) { // Оголошення перевантаження оператора порівняння ==
 	if (isXentered == true && other.isXentered == true) { // Перевірка умови, коли isXentered == true і other.isXentered == true
-		int numerator1 = (getX() * getB() + getA()) / getB(); // Визначення чисельника першого дробу
-		int numerator2 = (other.x * other.b + other.a) / other.b; // Визначення чисельника другого дробу
 
-		if (numerator1 == numerator2) { // Перевірка на рівність чисельників
+		double numerator1 = (intToDouble(getX()) * intToDouble(getB()) + intToDouble(getA())) / intToDouble(getB()); // Визначення першого дробу
+		double numerator2 = (intToDouble(other.x) * intToDouble(other.b) + intToDouble(other.a)) / intToDouble(other.b); // Визначення другого дробу
+
+
+		if (numerator1 == numerator2) { // Перевірка на рівність дробів
 			return Fractions("однакові"); // Повернення дробу зі стрічкою "однакові"
 		}
 		else {
@@ -256,10 +266,11 @@ Fractions Fractions::operator==(Fractions& other) { // Оголошення пе
 		}
 	}
 	if (isXentered == false && other.isXentered == false) { // Перевірка умови, коли isXentered == false і other.isXentered == false
-		double numerator1 = getA() / getB(); // Визначення чисельника першого дробу
-		double numerator2 = other.a / other.b; // Визначення чисельника другого дробу
+		double numerator1 = intToDouble(getA()) / intToDouble(getB()); // Визначення першого дробу
+		double numerator2 = intToDouble(other.a) / intToDouble(other.b); // Визначення другого дробу
 
-		if (numerator1 == numerator2) { // Перевірка на рівність чисельників
+		if (numerator1 == numerator2) { // Перевірка на рівність дробів
+			std::cout << numerator1 << " " << numerator2 << std::endl;
 			return Fractions("однакові"); // Повернення дробу зі стрічкою "однакові"
 		}
 		else {
@@ -267,10 +278,10 @@ Fractions Fractions::operator==(Fractions& other) { // Оголошення пе
 		}
 	}
 	if (isXentered == true && other.isXentered == false) { // Перевірка умови, коли isXentered == true і other.isXentered == false
-		int numerator1 = (getX() * getB() + getA()) / getB(); // Визначення чисельника першого дробу
-		int numerator2 = other.a / other.b; // Визначення чисельника другого дробу
+		double numerator1 = (intToDouble(getX()) * intToDouble(getB()) + intToDouble(getA())) / intToDouble(getB()); // Визначення першого дробу
+		double numerator2 = intToDouble(other.a) / intToDouble(other.a); // Визначення другого дробу
 
-		if (numerator1 == numerator2) { // Перевірка на рівність чисельників
+		if (numerator1 == numerator2) { // Перевірка на рівність дробів
 			return Fractions("однакові"); // Повернення дробу зі стрічкою "однакові"
 		}
 		else {
@@ -278,9 +289,9 @@ Fractions Fractions::operator==(Fractions& other) { // Оголошення пе
 		}
 	}
 	if (isXentered == false && other.isXentered == true) { // Перевірка умови, коли isXentered == false і other
-		int numerator1 = getA() / getB(); // Визначення чисельника першого дробу
-		int numerator2 = (other.x * other.b + other.a) / other.b; // Визначення чисельника другого дробу
-		if (numerator1 == numerator2) { // Перевірка на рівність чисельників
+		double numerator1 = intToDouble(getA()) / intToDouble(getB()); // Визначення першого дробу
+		double numerator2 = (intToDouble(other.x) * intToDouble(other.b) + intToDouble(other.a)) / intToDouble(other.b); // Визначення другого дробу
+		if (numerator1 == numerator2) { // Перевірка на рівність дробів
 			return Fractions("однакові"); // Повернення дробу зі стрічкою "однакові"
 		}
 		else {
